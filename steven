@@ -1,0 +1,122 @@
+def main_menu():
+        print("What can I help you? Plaese enter the NUMBER.")
+        print("1. Withdrawl")
+        print("2. Check Balance")
+        print("3. Deposit")
+        print("4. Change Password")
+        print("5. Exit")
+        
+def withdrawl(m):
+    print("Currently there are $",m,"in your account")
+    print("How much would you like to withdraw?")
+    while True:
+        withdrawl = input()
+        try:
+            num = float(withdrawl)
+            if m < num :
+                print ("Error! you dont have that much money please try again!")
+                continue
+            elif num < 0:
+                print("you can not withdrawl less than 0 dollars, please try again.")
+                continue
+            else:
+                
+                m = m - num
+                print("succeed withdrawl $: ",num, "you have $: ",m,"left")
+                return(m)
+        except:
+            print("please enter numbers.")
+            continue
+            
+def deopsit(m):
+    print("how much you wanna save?")
+    while True:
+        try:
+            d = input()
+            dd = float(d)
+            m = m + dd
+            if dd < 0 :
+                print("Error! please enter amount that is more than 0 dollars")
+                continue      
+        except:
+            print("please enter number!")
+            continue
+        return(m)
+    
+def main_page(a):
+    account = input("please enter your acount: ")
+    if account == "steven": 
+        while True:
+            password = input("please enter your password: ")
+            if password == a:
+                break
+            else:
+                print("password error")
+                pc = pc - 1
+#                    print(pc)
+                if pc < 1:
+                    while True:
+                        print("account locked , please context bank'staff")
+                        break
+                continue
+    else:
+        print("account does not exist")
+        main_page(a)
+
+def account_lock():
+    while True:
+        print("account locked , please context bank'staff")
+        try:
+            input()
+        except:
+            print("Account locked , please call bank staff...")
+            continue
+# main_code            
+m = 1000
+a = "123456"
+pc = 3
+account = input("please enter your account: ")
+while True:
+    if account != "steven":
+        print("account dose not exists.")
+        account = input("please enter your account: ")
+        continue
+    else:
+        while True:
+            password = input("please enter your password: ")
+            pc = pc - 1
+            try: 
+                if password == a:
+                    while True:
+                        main_menu()
+                        choose = input()
+                        if choose == "1":
+                            m = withdrawl(m)
+                        elif choose == "2":
+                            print("you have $ ",m,"left")
+                        elif choose == "3":
+                            m = deopsit(m)
+                            print("Deposit success! current balance: $",m)
+                        elif choose == "4":
+                            print("please enter new password:")
+                            a = input()
+                            print("you have change your password.")
+                        elif choose == "5":
+                            main_page(a)
+                elif pc < 1:
+                    account_lock()
+                else:
+                    print("password error")
+                    continue
+            except:
+                print("password error!!!")
+                continue
+
+
+                    
+                
+
+            
+
+
+    
